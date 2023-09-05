@@ -1,0 +1,12 @@
+node{
+	stage('build'){
+		sh 'python3 -v'
+	}
+	stage('test'){
+		git branch: 'main', url: 'https://github.com/MatheusCardosoKono/pipeline.git'
+		sh 'python3 hello.py'
+	}
+	stage('deploy'){
+		echo "finishef :D"
+	}
+}
