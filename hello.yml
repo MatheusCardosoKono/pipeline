@@ -1,12 +1,21 @@
-node{
-	stage('build'){
-		sh 'python3 -v'
-	}
-	stage('test'){
-		git branch: 'main', url: 'https://github.com/MatheusCardosoKono/pipeline.git'
-		sh 'python3 hello.py'
-	}
-	stage('deploy'){
-		echo "finishef :D"
-	}
-}
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                bat 'C:\\Users\\Matheus\\AppData\\Local\\Programs\\Python\\Python311\\python.exe --version'
+            }
+        }
+        stage('test') {
+            steps {
+                git branch:  'main', url:"https://github.com/MatheusCardosoKono/pipeline.git"
+                bat 'C:\\Users\\Matheus\\AppData\\Local\\Programs\\Python\\Python311\\python.exe hello.py'
+            }
+        }    
+        stage('deploy') {
+            steps {
+                echo "finished :D"
+            }
+        }
+    }
+  }
